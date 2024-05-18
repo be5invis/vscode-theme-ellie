@@ -1,14 +1,14 @@
 {
 	"name": "theme-ellie",
-	"displayName": "Dolch Theme",
+	"displayName": "Ellie theme",
 	"version": "0.1.0",
-	"description": "Dolch themes for VS Code.",
+	"description": "Ellie themes for VS Code.",
 	"categories": [
 		"Themes"
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/be5invis/vscode-theme-dolch"
+		"url": "https://github.com/be5invis/vscode-theme-ellie"
 	},
 	"license": "MIT",
 	"author": "Renzhi Li aka Belleve Invis<belleve@typeof.net>",
