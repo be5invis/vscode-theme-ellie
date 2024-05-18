@@ -37,13 +37,13 @@ export default function generateColorTheme(
 		foreground: palette.keyword[10].hex()
 	};
 	const operator = {
-		foreground: palette.coAccent[10].hex()
+		foreground: palette.accent[10].hex()
 	};
 	const weakOperator = {
-		foreground: palette.coShades[6].hex()
+		foreground: palette.contra[6].hex()
 	};
 	const literal = {
-		foreground: palette.accent[9].hex()
+		foreground: palette.coAccent[9].hex()
 	};
 	const comment = {
 		foreground: palette.fg[5].hex()
@@ -53,7 +53,7 @@ export default function generateColorTheme(
 	};
 	const quote = {
 		fontStyle: "italic",
-		foreground: palette.accent[7].hex()
+		foreground: palette.coAccent[7].hex()
 	};
 	const markdownRaw = {
 		foreground: palette.contra[8].hex()
@@ -65,17 +65,20 @@ export default function generateColorTheme(
 		foreground: palette.fg[9].hex()
 	};
 	const typeName = {
-		foreground: palette.coAccent[8].hex()
+		foreground: palette.accent[8].hex()
 	};
 	const namespace = {
-		foreground: palette.coShades[9].hex()
+		foreground: palette.contra[9].hex()
 	};
 	const builtInType = {
+		foreground: palette.accent[9].hex()
+	};
+	const constant = {
 		foreground: palette.coAccent[9].hex()
 	};
 	const typeParameter = {
 		fontStyle: "italic",
-		foreground: palette.coAccent[8].hex()
+		foreground: palette.contra[8].hex()
 	};
 	const punctuation = {
 		foreground: palette.fg[5].hex()
@@ -365,6 +368,11 @@ export default function generateColorTheme(
 			name: "Type parameter",
 			scope: ["entity.name.type.parameter"],
 			settings: typeParameter
+		},
+		{
+			name: "Constant",
+			scope: ["variable.other.constant"],
+			settings: constant
 		},
 		{
 			name: "User names",

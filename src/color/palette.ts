@@ -11,7 +11,6 @@ export interface PaletteProps {
 	coAccent?: Grade;
 	keyword?: Grade;
 	contra?: Grade;
-	coShades?: Grade;
 
 	// Color ring
 	ring?: Grade;
@@ -41,7 +40,6 @@ export type PaletteKey = keyof Palette &
 		| "coAccent"
 		| "keyword"
 		| "contra"
-		| "coShades"
 		| "red"
 		| "orange"
 		| "yellow"
@@ -62,7 +60,6 @@ const PaletteKeys: PaletteKey[] = [
 	"accent",
 	"coAccent",
 	"contra",
-	"coShades",
 	"red",
 	"orange",
 	"yellow",
@@ -84,7 +81,6 @@ export class Palette {
 	public coAccent: Color[];
 	public keyword: Color[];
 	public contra: Color[];
-	public coShades: Color[];
 	public red: Color[];
 	public orange: Color[];
 	public yellow: Color[];
@@ -107,7 +103,6 @@ export class Palette {
 		this.coAccent = getColorGrades(GRADES, { ...props.fg, ...props.coAccent });
 		this.keyword = getColorGrades(GRADES, { ...props.fg, ...props.keyword });
 		this.contra = getColorGrades(GRADES, { ...props.fg, ...props.contra });
-		this.coShades = getColorGrades(GRADES, { ...props.fg, ...props.coShades });
 
 		const ringCommon = { ...props.fg, ...props.accent, ...props.ring };
 		this.red = getColorGrades(GRADES, { ...ringCommon, ...props.red });

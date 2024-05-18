@@ -20,7 +20,6 @@ buildColorTheme("Ellie", "ellie", {
 	accent: { luma: [6, 90], chroma: [42, 36], hue: 339 },
 	coAccent: { luma: [6, 90], chroma: [42, 36], hue: 304 },
 	contra: { luma: [6, 90], chroma: 40, hue: 67 },
-	coShades: { luma: [6, 90], chroma: 16, hue: 36 },
 	ring: { chroma: [32, 56] },
 	bracketGrades: ["violet", "rose", "orange", "violet", "rose", "orange"],
 	...StandardRing(339)
@@ -32,7 +31,6 @@ buildColorTheme("Ellie Light", "ellie-light", {
 	accent: { power: 1, luma: [92, 30], chroma: [36, 54], hue: 339 },
 	coAccent: { power: 1, luma: [92, 30], chroma: [36, 60], hue: 304 },
 	contra: { power: 1, luma: [92, 30], chroma: [40, 60], hue: 67 },
-	coShades: { power: 1, luma: [92, 30], chroma: 16, hue: 36 },
 	ring: { chroma: [32, 56] },
 	bracketGrades: ["violet", "rose", "orange", "violet", "rose", "orange"],
 	...StandardRing(339)

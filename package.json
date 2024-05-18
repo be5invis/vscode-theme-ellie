@@ -1,7 +1,7 @@
 {
 	"name": "theme-ellie",
 	"displayName": "Ellie theme",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Ellie themes for VS Code.",
 	"categories": [
 		"Themes"
