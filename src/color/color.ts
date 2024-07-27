@@ -1,6 +1,6 @@
 import { GradeSteps } from "../util";
 
-import { lab2rgb, rgb2lab } from "./convert";
+import { okLabToSRgb, sRgbToOkLab } from "./convert";
 
 export class Color {
 	private constructor(
@@ -27,17 +27,13 @@ export class Color {
 
 	// ctor
 	public static rgb(r: number, g: number, b: number) {
-		const [L, A, B] = rgb2lab([r, g, b]);
-		return new Color(r, g, b, L, A, B, 0xff);
-	}
-	public static lab(L: number, A: number, B: number) {
-		const [r, g, b] = lab2rgb([L, A, B]);
+		const [L, A, B] = sRgbToOkLab([r, g, b]);
 		return new Color(r, g, b, L, A, B, 0xff);
 	}
 	public static lch(L: number, C: number, H: number) {
 		const A = C * Math.cos(H);
 		const B = C * Math.sin(H);
-		const [r, g, b] = lab2rgb([L, A, B]);
+		const [r, g, b] = okLabToSRgb([L, A, B]);
 		return new Color(r, g, b, L, A, B, 0xff);
 	}
 	public static hex(input: string) {
@@ -59,7 +55,7 @@ export class Color {
 		const A1 = this.lerp(this.A, scale, other.A);
 		const B1 = this.lerp(this.B, scale, other.B);
 		const opacity1 = this.opacity + (other.opacity - this.opacity) * scale;
-		const [r1, g1, b1] = lab2rgb([L1, A1, B1]);
+		const [r1, g1, b1] = okLabToSRgb([L1, A1, B1]);
 		return new Color(r1, g1, b1, L1, A1, B1, opacity1);
 	}
 	private lerp(a: number, s: number, b: number) {
@@ -79,7 +75,7 @@ export class Color {
 		const g1 = this.lerpGamma(this.g, scale, other.g, g);
 		const b1 = this.lerpGamma(this.b, scale, other.b, g);
 		const opacity1 = this.opacity + (other.opacity - this.opacity) * scale;
-		const [L1, A1, B1] = rgb2lab([r1, g1, b1]);
+		const [L1, A1, B1] = sRgbToOkLab([r1, g1, b1]);
 		return new Color(r1, g1, b1, L1, A1, B1, opacity1);
 	}
 
@@ -102,7 +98,7 @@ export class Color {
 		const red = 0 | this.r;
 		const green = 0 | this.g;
 		const blue = 0 | this.b;
-		const fg = this.L < 50 ? `97` : `30`;
+		const fg = this.L < 0.5 ? `97` : `30`;
 		let label = s || this.hexRaw();
 		return `\x1b[${fg};48;2;${red};${green};${blue}m ${label} \x1b[0m`;
 	}

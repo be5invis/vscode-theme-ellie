@@ -1,4 +1,4 @@
-import { DEGREE } from "../util";
+import { DEGREE, PERCENT } from "../util";
 
 import { Color } from "./color";
 
@@ -30,8 +30,8 @@ export function getColorGrades(steps: number, grade: Grade): Color[] {
 	for (let step = 0; step <= steps; step++) {
 		const scaleChroma = step / steps;
 		const scaleLuma = Math.pow(scaleChroma, grade.power || 1);
-		const luma = mix(r0(grade.luma), scaleLuma, r1(grade.luma));
-		const chroma = mix(r0(grade.chroma), scaleChroma, r1(grade.chroma));
+		const luma = PERCENT * mix(r0(grade.luma), scaleLuma, r1(grade.luma));
+		const chroma = 0.37 * PERCENT * mix(r0(grade.chroma), scaleChroma, r1(grade.chroma));
 		const hue = mix(r0(grade.hue), scaleChroma, r1(grade.hue)) * DEGREE;
 		colors.push(Color.lch(luma, chroma, hue));
 	}

@@ -6,6 +6,7 @@ export function GradeSteps(start: number, end: number) {
 	return a;
 }
 
+export const PERCENT = 0.01;
 export const DEGREE = Math.PI / 180;
 
 export function inspectColor(hex: string) {

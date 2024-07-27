@@ -136,7 +136,7 @@ export class Palette {
 }
 
 export function StandardRing(angle: number) {
-	angle = (angle % 30) + 30;
+	angle = (angle % 30) + 15;
 	return {
 		red: { hue: angle + 0 },
 		orange: { hue: angle + 30 },

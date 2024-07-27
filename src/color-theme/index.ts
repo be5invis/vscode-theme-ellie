@@ -88,8 +88,9 @@ export default function generateColorTheme(
 	};
 	const access = {};
 
-	const selectionAlpha = 5 / 16;
-	const highlightAlpha = 4 / 16;
+	const selectionAlpha = (palette.isDark ? 5 : 3) / 16;
+	const highlightAlpha = (palette.isDark ? 4 : 3) / 16;
+	const braceHighlightAlpha = (palette.isDark ? 11 : 12) / 16;
 	const highlightBorderAlpha = 12 / 16;
 
 	const uiColors = {
@@ -146,8 +147,7 @@ export default function generateColorTheme(
 		"tab.inactiveForeground": palette.fg[7].hex(),
 		"tab.activeBackground": primaryBg.hex(),
 		"tab.activeForeground": palette.fg[10].hex(),
-		"tab.hoverBackground": palette.bg[1].hex(),
-		"tab.hoverBorder": palette.accent[5].hex(),
+		"tab.hoverBackground": palette.bg[1].alpha(0.5).hexaa(),
 		"tab.activeBorder": palette.accent[8].hex(),
 
 		"peekView.border": palette.fg[2].hex(),
@@ -176,12 +176,24 @@ export default function generateColorTheme(
 		"diffEditor.removedTextBackground": palette.red[5].alpha(0.15).hexaa(),
 		"diffEditor.insertedTextBackground": palette.green[5].alpha(0.1).hexaa(),
 
-		"editorBracketHighlight.foreground1": palette[options.bracketGrades[0]][6].hex(),
-		"editorBracketHighlight.foreground2": palette[options.bracketGrades[1]][6].hex(),
-		"editorBracketHighlight.foreground3": palette[options.bracketGrades[2]][6].hex(),
-		"editorBracketHighlight.foreground4": palette[options.bracketGrades[3]][6].hex(),
-		"editorBracketHighlight.foreground5": palette[options.bracketGrades[4]][6].hex(),
-		"editorBracketHighlight.foreground6": palette[options.bracketGrades[5]][6].hex(),
+		"editorBracketHighlight.foreground1": palette[options.bracketGrades[0]][8]
+			.alpha(braceHighlightAlpha)
+			.hexaa(),
+		"editorBracketHighlight.foreground2": palette[options.bracketGrades[1]][8]
+			.alpha(braceHighlightAlpha)
+			.hexaa(),
+		"editorBracketHighlight.foreground3": palette[options.bracketGrades[2]][8]
+			.alpha(braceHighlightAlpha)
+			.hexaa(),
+		"editorBracketHighlight.foreground4": palette[options.bracketGrades[3]][8]
+			.alpha(braceHighlightAlpha)
+			.hexaa(),
+		"editorBracketHighlight.foreground5": palette[options.bracketGrades[4]][8]
+			.alpha(braceHighlightAlpha)
+			.hexaa(),
+		"editorBracketHighlight.foreground6": palette[options.bracketGrades[5]][8]
+			.alpha(braceHighlightAlpha)
+			.hexaa(),
 
 		"textLink.foreground": palette.accent[7].hex(),
 		"textLink.activeForeground": palette.accent[8].hex(),
@@ -191,7 +203,7 @@ export default function generateColorTheme(
 		"sideBarSectionHeader.background": palette.bg[3].hex(),
 
 		"list.highlightForeground": palette.accent[6].hex(),
-		"list.hoverBackground": palette.bg[3].hex(),
+		"list.hoverBackground": palette.bg[3].alpha(0.33).hexaa(),
 		"list.inactiveSelectionBackground": palette.bg[5].alpha(0.3).hexaa(),
 		"list.activeSelectionBackground": palette.accent[5].alpha(0.25).hexaa(),
 		"list.focusBackground": palette.accent[5].alpha(0.25).hexaa(),
@@ -235,6 +247,20 @@ export default function generateColorTheme(
 		"statusBar.debuggingBackground": palette.bg[2].hex(),
 		"statusBar.debuggingForeground": primaryFg.hex(),
 
+		"statusBarItem.hoverBackground": palette.bg[3].hexaa(),
+		"statusBarItem.remoteBackground": palette.bg[2].hex(),
+		"statusBarItem.remoteForeground": palette.fg[8].hex(),
+		"statusBarItem.remoteHoverBackground": palette.accent[8].alpha(0.25).hexaa(),
+		"statusBarItem.remoteHoverForeground": palette.fg[10].hex(),
+		"statusBarItem.errorBackground": palette.red[4].hex(),
+		"statusBarItem.errorForeground": palette.fg[8].hex(),
+		"statusBarItem.errorHoverBackground": palette.red[8].alpha(0.25).hexaa(),
+		"statusBarItem.errorHoverForeground": palette.fg[10].hex(),
+		"statusBarItem.warningBackground": palette.yellow[4].hex(),
+		"statusBarItem.warningForeground": palette.fg[8].hex(),
+		"statusBarItem.warningHoverBackground": palette.yellow[8].alpha(0.25).hexaa(),
+		"statusBarItem.warningHoverForeground": palette.fg[10].hex(),
+
 		"panel.border": border.hex(),
 		"panelTitle.activeBorder": palette.accent[5].hex(),
 
@@ -258,16 +284,16 @@ export default function generateColorTheme(
 		"terminal.ansiWhite": palette.fg[8].hex(),
 		"terminal.ansiBrightWhite": palette.fg[10].hex(),
 
-		"terminal.ansiRed": palette.rose[5].hex(),
+		"terminal.ansiRed": palette.red[5].hex(),
 		"terminal.ansiYellow": palette.yellow[6].hex(),
-		"terminal.ansiGreen": palette.chartreuse[5].hex(),
+		"terminal.ansiGreen": palette.green[5].hex(),
 		"terminal.ansiCyan": palette.cyan[5].hex(),
 		"terminal.ansiBlue": palette.blue[5].hex(),
 		"terminal.ansiMagenta": palette.violet[5].hex(),
 
-		"terminal.ansiBrightRed": palette.rose[9].hex(),
+		"terminal.ansiBrightRed": palette.red[9].hex(),
 		"terminal.ansiBrightYellow": palette.yellow[9].hex(),
-		"terminal.ansiBrightGreen": palette.chartreuse[9].hex(),
+		"terminal.ansiBrightGreen": palette.green[9].hex(),
 		"terminal.ansiBrightCyan": palette.cyan[9].hex(),
 		"terminal.ansiBrightBlue": palette.blue[9].hex(),
 		"terminal.ansiBrightMagenta": palette.violet[9].hex()

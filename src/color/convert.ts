@@ -1,50 +1,54 @@
 export type ColorChannels = [number, number, number];
 
-const DELTA = 6 / 29;
-// D65 normalization point
-const XN = 0.95047;
-const YN = 1.0;
-const ZN = 1.08883;
+/// OkLab functions
+export function okLabToSRgb([L, A, B]: ColorChannels): ColorChannels {
+	let l = L + A * +0.3963377774 + B * +0.2158037573;
+	let m = L + A * -0.1055613458 + B * -0.0638541728;
+	let s = L + A * -0.0894841775 + B * -1.291485548;
 
-export function lab2rgb(lab: ColorChannels): ColorChannels {
-	let y = (lab[0] + 16) / 116,
-		x = lab[1] / 500 + y,
-		z = y - lab[2] / 200;
+	// The ** operator here cubes; same as l_*l_*l_ in the C++ example:
+	l = l ** 3;
+	m = m ** 3;
+	s = s ** 3;
 
-	x = XN * labFN(x);
-	y = YN * labFN(y);
-	z = ZN * labFN(z);
+	let r = l * +4.0767416621 + m * -3.3077115913 + s * +0.2309699292;
+	let g = l * -1.2684380046 + m * +2.6097574011 + s * -0.3413193965;
+	let b = l * -0.0041960863 + m * -0.7034186147 + s * +1.707614701;
 
-	const r = x * 3.2406 + y * -1.5372 + z * -0.4986;
-	const g = x * -0.9689 + y * 1.8758 + z * 0.0415;
-	const b = x * 0.0557 + y * -0.204 + z * 1.057;
+	// Convert to 0..255 range
+	r = 255 * rgbGamma(r);
+	g = 255 * rgbGamma(g);
+	b = 255 * rgbGamma(b);
 
-	return [rgbGamma(r) * 255, rgbGamma(g) * 255, rgbGamma(b) * 255];
+	return [r, g, b];
+}
+
+export function sRgbToOkLab([r, g, b]: ColorChannels): ColorChannels {
+	r = rgbDeGamma(r / 255);
+	g = rgbDeGamma(g / 255);
+	b = rgbDeGamma(b / 255);
+
+	// This is the Oklab math:
+	var l = 0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b;
+	var m = 0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b;
+	var s = 0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b;
+
+	l = Math.cbrt(l);
+	m = Math.cbrt(m);
+	s = Math.cbrt(s);
+
+	return [
+		l * +0.2104542553 + m * +0.793617785 + s * -0.0040720468, // L
+		l * +1.9779984951 + m * -2.428592205 + s * +0.4505937099, // A
+		l * +0.0259040371 + m * +0.7827717662 + s * -0.808675766 // B
+	];
 }
 
 function rgbGamma(r: number): number {
 	const r1 = r > 0.0031308 ? 1.055 * Math.pow(r, 1 / 2.4) - 0.055 : 12.92 * r;
 	return Math.max(0, Math.min(1, r1));
 }
-function labFN(x: number) {
-	return x > DELTA ? x * x * x : 3 * DELTA * DELTA * (x - 4 / 29);
-}
-
-export function rgb2lab(rgb: ColorChannels): ColorChannels {
-	const r = rgbDeGamma(rgb[0] / 255);
-	const g = rgbDeGamma(rgb[1] / 255);
-	const b = rgbDeGamma(rgb[2] / 255);
-
-	const x = labF((r * 0.4124 + g * 0.3576 + b * 0.1805) / XN);
-	const y = labF((r * 0.2126 + g * 0.7152 + b * 0.0722) / YN);
-	const z = labF((r * 0.0193 + g * 0.1192 + b * 0.9505) / ZN);
-
-	return [116 * y - 16, 500 * (x - y), 200 * (y - z)];
-}
 
 function rgbDeGamma(r: number): number {
 	return r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
-}
-function labF(x: number): any {
-	return x > DELTA * DELTA * DELTA ? Math.pow(x, 1 / 3) : x / (3 * DELTA * DELTA) + 4 / 29;
 }

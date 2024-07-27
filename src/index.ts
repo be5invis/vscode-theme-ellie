@@ -9,25 +9,25 @@ import { buildWtTheme } from "./color/wt-theme";
 setTimeout(main, 0);
 
 const THEME_ELLIE: PaletteProps & ThemeOptions = {
-	fg: { luma: [6, 90], chroma: 2, hue: 24 },
-	bg: { luma: [6, 90], chroma: 2, hue: 24 },
-	accent: { luma: [6, 90], chroma: [42, 36], hue: 339 },
-	coAccent: { luma: [6, 90], chroma: [42, 36], hue: 304 },
-	contra: { luma: [6, 90], chroma: 40, hue: 67 },
-	ring: { chroma: [32, 56] },
-	bracketGrades: ["violet", "rose", "orange", "violet", "rose", "orange"],
+	fg: { luma: [20, 90], chroma: 2, hue: 24 },
+	bg: { luma: [20, 90], chroma: 2, hue: 24 },
+	accent: { luma: [16, 90], chroma: [42, 32], hue: 340 },
+	coAccent: { luma: [16, 90], chroma: [42, 32], hue: 304 },
+	contra: { luma: [16, 90], chroma: [42, 32], hue: 67 },
+	ring: { chroma: [32, 48] },
+	bracketGrades: ["violet", "magenta", "rose", "red", "orange", "yellow"],
 	...StandardRing(339)
 };
 
 const THEME_ELLIE_LIGHT: PaletteProps & ThemeOptions = {
-	fg: { power: 1, luma: [96, 10], chroma: [12, 4], hue: 307 },
-	bg: { power: 1, luma: [96, 10], chroma: [7, 7], hue: 307 },
-	keyword: { power: 1, luma: [92, 42], chroma: 54, hue: 339 },
-	accent: { power: 1, luma: [92, 30], chroma: [36, 54], hue: 339 },
-	coAccent: { power: 1, luma: [92, 30], chroma: [36, 60], hue: 304 },
-	contra: { power: 1, luma: [92, 30], chroma: [40, 60], hue: 67 },
-	ring: { chroma: [32, 56] },
-	bracketGrades: ["violet", "rose", "orange", "violet", "rose", "orange"],
+	fg: { luma: [98, 16], chroma: [8, 4], hue: 350 },
+	bg: { luma: [98, 16], chroma: [4, 2], hue: 350 },
+	keyword: { luma: [92, 48], chroma: 54, hue: 339 },
+	accent: { luma: [92, 48], chroma: [36, 54], hue: 340 },
+	coAccent: { luma: [92, 48], chroma: [36, 60], hue: 304 },
+	contra: { luma: [92, 48], chroma: [40, 60], hue: 67 },
+	ring: { chroma: [32, 48] },
+	bracketGrades: ["violet", "magenta", "rose", "red", "orange", "yellow"],
 	...StandardRing(339)
 };
 
