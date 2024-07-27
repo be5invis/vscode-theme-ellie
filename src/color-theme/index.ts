@@ -258,12 +258,12 @@ export default function generateColorTheme(
 		"terminal.ansiWhite": palette.fg[8].hex(),
 		"terminal.ansiBrightWhite": palette.fg[10].hex(),
 
-		"terminal.ansiRed": palette.rose[6].hex(),
+		"terminal.ansiRed": palette.rose[5].hex(),
 		"terminal.ansiYellow": palette.yellow[6].hex(),
-		"terminal.ansiGreen": palette.chartreuse[6].hex(),
-		"terminal.ansiCyan": palette.cyan[6].hex(),
-		"terminal.ansiBlue": palette.blue[6].hex(),
-		"terminal.ansiMagenta": palette.violet[6].hex(),
+		"terminal.ansiGreen": palette.chartreuse[5].hex(),
+		"terminal.ansiCyan": palette.cyan[5].hex(),
+		"terminal.ansiBlue": palette.blue[5].hex(),
+		"terminal.ansiMagenta": palette.violet[5].hex(),
 
 		"terminal.ansiBrightRed": palette.rose[9].hex(),
 		"terminal.ansiBrightYellow": palette.yellow[9].hex(),

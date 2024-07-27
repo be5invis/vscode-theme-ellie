@@ -1,3 +1,4 @@
+import { Color } from "./color";
 import { Palette } from "./palette";
 
 export function buildWtTheme(name: string, palette: Palette) {
@@ -12,12 +13,12 @@ export function buildWtTheme(name: string, palette: Palette) {
 		white: palette.fg[8],
 		brightWhite: palette.fg[10],
 
-		red: palette.rose[6],
+		red: palette.rose[5],
 		yellow: palette.yellow[6],
-		green: palette.chartreuse[6],
-		cyan: palette.cyan[6],
-		blue: palette.blue[6],
-		purple: palette.violet[6],
+		green: palette.chartreuse[5],
+		cyan: palette.cyan[5],
+		blue: palette.blue[5],
+		purple: palette.violet[5],
 
 		brightRed: palette.rose[9],
 		brightYellow: palette.yellow[9],
@@ -27,7 +28,7 @@ export function buildWtTheme(name: string, palette: Palette) {
 		brightPurple: palette.violet[9]
 	};
 
-	const colorIdMap = [
+	showPreCurrView([
 		wtTheme.black,
 		wtTheme.red,
 		wtTheme.green,
@@ -44,24 +45,39 @@ export function buildWtTheme(name: string, palette: Palette) {
 		wtTheme.brightPurple,
 		wtTheme.brightCyan,
 		wtTheme.brightWhite
-	];
+	]);
 
-	for (let i = 0; i < 2; i++) {
-		let s = "";
-		for (let j = 0; j < 8; j++) {
-			let colorID = i * 8 + j;
-			let tc = colorIdMap[colorID];
-			if (j > 0) s += " ";
-			const fgPrev = j == 0 ? `97` : `30`;
-			s += `\u001B[${fgPrev};48;5;${colorID}m PREV \u001B[0m`;
-			s += tc.ansiBlock("CURR");
-		}
-		console.log(s);
-	}
+	showBgFgPreview();
 
 	const wtThemeFinal = {
 		name,
 		...Object.fromEntries(Array.from(Object.entries(wtTheme)).map(([k, v]) => [k, v.hex()]))
 	};
 	console.log(JSON.stringify(wtThemeFinal, null, 4));
+}
+
+function showBgFgPreview() {
+	for (let row = 0; row < 16; row++) {
+		let s = "  ";
+		for (let col = 0; col < 8; col++) {
+			if (s) s += " ";
+			s += `\x1b[48;5;${col};38;5;${row}m gYw \x1B[0m`;
+		}
+		console.log(s);
+	}
+}
+
+function showPreCurrView(colors: Color[]) {
+	for (let i = 0; i < 2; i++) {
+		let s = "  ";
+		for (let j = 0; j < 8; j++) {
+			let colorID = i * 8 + j;
+			let tc = colors[colorID];
+			if (j > 0) s += " ";
+			const fgPrev = j == 0 ? `97` : `30`;
+			s += `\x1B[${fgPrev};48;5;${colorID}m PREV \x1B[0m`;
+			s += tc.ansiBlock("CURR");
+		}
+		console.log(s);
+	}
 }
