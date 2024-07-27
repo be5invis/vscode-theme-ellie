@@ -14,14 +14,14 @@ export function buildWtTheme(name: string, palette: Palette) {
 		brightWhite: palette.fg[10],
 
 		red: palette.red[5],
-		yellow: palette.yellow[6],
+		yellow: palette.yellow[6], // Make Yellow slightly brighter
 		green: palette.green[5],
 		cyan: palette.cyan[5],
 		blue: palette.blue[5],
 		purple: palette.violet[5],
 
 		brightRed: palette.red[9],
-		brightYellow: palette.yellow[9],
+		brightYellow: palette.yellow[10], // Make Yellow slightly brighter
 		brightGreen: palette.green[9],
 		brightCyan: palette.cyan[9],
 		brightBlue: palette.blue[9],
