@@ -98,16 +98,17 @@ export class Color {
 	public hexaa() {
 		return `${this.hex()}${this.chan(this.opacity)}`;
 	}
-	public ansiBlock() {
+	public ansiBlock(s?: string) {
 		const red = 0 | this.r;
 		const green = 0 | this.g;
 		const blue = 0 | this.b;
 		const fg = this.L < 50 ? `97` : `30`;
-		return `\x1b[${fg};48;2;${red};${green};${blue}m ${this.hexRaw()} \x1b[0m`;
+		let label = s || this.hexRaw();
+		return `\x1b[${fg};48;2;${red};${green};${blue}m ${label} \x1b[0m`;
 	}
 
 	// Grades
 	public static grades(steps: number, a: Color, b: Color, power: number = 1) {
-		return GradeSteps(0, steps).map(s => a.mix(Math.pow(s / steps, power), b));
+		return GradeSteps(0, steps).map((s) => a.mix(Math.pow(s / steps, power), b));
 	}
 }
