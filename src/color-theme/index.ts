@@ -246,7 +246,31 @@ export default function generateColorTheme(
 		"breadcrumb.foreground": comment.foreground,
 		"breadcrumb.focusForeground": quote.foreground,
 		"breadcrumb.activeSelectionForeground": quote.foreground,
-		"breadcrumbPicker.background": palette.bg[1].hex()
+		"breadcrumbPicker.background": palette.bg[1].hex(),
+
+		"terminal.background": palette.bg[0].hex(),
+		"terminal.foreground": palette.fg[8].hex(),
+		"terminal.cursorColor": palette.accent[10].hex(),
+		"terminal.selectionBackground": palette.accent[7].mix(0.5, palette.bg[0]).hex(),
+
+		"terminal.ansiBlack": palette.bg[0].hex(),
+		"terminal.ansiBrightBlack": palette.bg[4].hex(),
+		"terminal.ansiWhite": palette.fg[8].hex(),
+		"terminal.ansiBrightWhite": palette.fg[10].hex(),
+
+		"terminal.ansiRed": palette.rose[6].hex(),
+		"terminal.ansiYellow": palette.yellow[6].hex(),
+		"terminal.ansiGreen": palette.green[6].hex(),
+		"terminal.ansiCyan": palette.cyan[6].hex(),
+		"terminal.ansiBlue": palette.blue[6].hex(),
+		"terminal.ansiMagenta": palette.violet[6].hex(),
+
+		"terminal.ansiBrightRed": palette.rose[9].hex(),
+		"terminal.ansiBrightYellow": palette.yellow[9].hex(),
+		"terminal.ansiBrightGreen": palette.green[9].hex(),
+		"terminal.ansiBrightCyan": palette.cyan[9].hex(),
+		"terminal.ansiBrightBlue": palette.blue[9].hex(),
+		"terminal.ansiBrightMagenta": palette.violet[9].hex()
 	};
 
 	const tokenColors = [

@@ -133,7 +133,27 @@
 		"breadcrumb.foreground": "#827C89",
 		"breadcrumb.focusForeground": "#7C65BE",
 		"breadcrumb.activeSelectionForeground": "#7C65BE",
-		"breadcrumbPicker.background": "#DED9E6"
+		"breadcrumbPicker.background": "#DED9E6",
+		"terminal.background": "#F7F1FE",
+		"terminal.foreground": "#423F47",
+		"terminal.cursorColor": "#811866",
+		"terminal.selectionBackground": "#D5A2C7",
+		"terminal.ansiBlack": "#F7F1FE",
+		"terminal.ansiBrightBlack": "#98939F",
+		"terminal.ansiWhite": "#423F47",
+		"terminal.ansiBrightWhite": "#1D1B20",
+		"terminal.ansiRed": "#CD6079",
+		"terminal.ansiYellow": "#8E852F",
+		"terminal.ansiGreen": "#1F9565",
+		"terminal.ansiCyan": "#0095B5",
+		"terminal.ansiBlue": "#5083D2",
+		"terminal.ansiMagenta": "#9674C2",
+		"terminal.ansiBrightRed": "#A0224A",
+		"terminal.ansiBrightYellow": "#5C5700",
+		"terminal.ansiBrightGreen": "#006634",
+		"terminal.ansiBrightCyan": "#00678B",
+		"terminal.ansiBrightBlue": "#0056AB",
+		"terminal.ansiBrightMagenta": "#664399"
 	},
 	"tokenColors": [
 		{
