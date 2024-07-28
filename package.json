@@ -1,7 +1,7 @@
 {
 	"name": "theme-ellie",
 	"displayName": "Ellie theme",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "Ellie themes for VS Code.",
 	"categories": [
 		"Themes"
@@ -16,7 +16,8 @@
 	"scripts": {
 		"build": "tsc -p tsconfig.json && node lib/index",
 		"clean": "rimraf coverage lib tmp",
-		"watch": "tsc -w -p tsconfig.json"
+		"watch": "tsc -w -p tsconfig.json",
+		"publish": "npm run build && npx vsce publish"
 	},
 	"contributes": {
 		"iconThemes": [
