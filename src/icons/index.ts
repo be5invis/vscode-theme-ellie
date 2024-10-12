@@ -190,6 +190,12 @@ function recipe($: IconDefiner) {
 	fn(".eslintrc.js", "config-eslint");
 	fn(".eslintrc.json", "config-eslint");
 	fn(".eslintignore", "config-eslint");
+	fn("eslint.config.js", "config-eslint");
+	fn("eslint.config.mjs", "config-eslint");
+	fn("eslint.config.cjs", "config-eslint");
+	fn("eslint.config.ts", "config-eslint");
+	fn("eslint.config.mts", "config-eslint");
+	fn("eslint.config.cts", "config-eslint");
 	fn(".babelrc", "config-js");
 	fn("package.json", "npm");
 	fn("package-lock.json", "file-npm");
